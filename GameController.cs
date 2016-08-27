@@ -17,6 +17,7 @@ namespace shmup
     {
         private static SaveManager<GameController> saveManager = new SaveManager<GameController>();
         protected static void Save() {
+	    float noTest = 2;
 	    int test = 3;
             saveManager.Save(Valid, Valid.ToString());
         }
