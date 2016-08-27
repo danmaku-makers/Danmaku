@@ -17,6 +17,7 @@ namespace shmup
     {
         private static SaveManager<GameController> saveManager = new SaveManager<GameController>();
         protected static void Save() {
+		// странный комментарий
 		var s = "Hello string";
 	    float noTest = 2;
 		var result = 10;
