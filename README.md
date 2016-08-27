@@ -1,2 +1,2 @@
-# danmaku
-amateur bullet hell
+# Danmaku
+Amateur bullet hell
