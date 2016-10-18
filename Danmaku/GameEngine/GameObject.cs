@@ -15,5 +15,10 @@ namespace Danmaku.GameEngine
 		public Vector Position { get; set; }
 		public Vector Speed { get; set; }
 		public InputComponent Input { get; set; }
+
+		public GameObject()
+		{
+			ObjectStorage.Instance.Add(this);
+		}
 	}
 }
