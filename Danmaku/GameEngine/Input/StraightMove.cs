@@ -7,19 +7,39 @@ using System.Windows;
 
 namespace Danmaku.GameEngine.Input
 {
-	static class StraightMove
+	class StraightMove : IPuppeteer
 	{
-		private static List<Vector> velocity = new List<Vector>();
+		private List<Vector> velocity = new List<Vector>();
+		private static StraightMove instance = new StraightMove();
 
-		public static void Move(GameObject puppet)
+		public static StraightMove Instance
+		{
+			get { return instance; }
+		}
+
+		public void Lead(GameObject puppet, Vector speed)
+		{
+			if (puppet.Input.Puppeteer == this)
+			{
+				velocity[puppet.Input.Index] = speed;
+			}
+			else
+			{
+				if (puppet.Input.Puppeteer != null)
+					puppet.Input.Puppeteer.Unbind(puppet);
+				puppet.Input = new MoveComponent(this, velocity.Count);
+				velocity.Add(speed);
+			}
+		}
+
+		public void Move(GameObject puppet)
 		{
 			puppet.Position = puppet.Position + velocity[puppet.Input.Index];
 		}
 
-		public static void Lead(GameObject puppet, Vector speed)
+		public void Unbind(GameObject puppet)
 		{
-			puppet.Input = new InputComponent(Move, velocity.Count);
-			velocity.Add(speed);
+			velocity.RemoveAt(puppet.Input.Index);
 		}
 	}
 }

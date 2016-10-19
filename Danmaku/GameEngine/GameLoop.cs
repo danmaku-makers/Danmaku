@@ -8,18 +8,22 @@ namespace Danmaku.GameEngine
 {
 	static class GameLoop
 	{
-		public static int frameNumber = 0;
-		public static bool frameEven = true;
+		private static int frame = 0;
+		private static bool frameEven = true;
 
-		public static int FrameNumber
+		public static int Frame
 		{
-			get { }
+			get { return frame; }
+		}
+		public static bool FrameEven
+		{
+			get { return frameEven; }
 		}
 
-		public static void Frame()
+		public static void Act()
 		{
-			++FrameNumber;
-			FrameEven = !FrameEven;
+			++frame;
+			frameEven = !frameEven;
 		}
 	}
 }

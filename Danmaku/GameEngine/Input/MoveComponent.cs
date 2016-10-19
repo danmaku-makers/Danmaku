@@ -6,23 +6,28 @@ using System.Threading.Tasks;
 
 namespace Danmaku.GameEngine.Input
 {
-	struct InputComponent
+	struct MoveComponent
 	{
-		private Action<GameObject> move;
+		private IPuppeteer puppeteer;
 		private int index;
 
 		public int Index
 		{
 			get { return index; }
 		}
-		public InputComponent(Action<GameObject> move, int index)
+		public IPuppeteer Puppeteer
 		{
-			this.move = move;
+			get { return puppeteer; }
+		}
+
+		public MoveComponent(IPuppeteer puppeteer, int index)
+		{
+			this.puppeteer = puppeteer;
 			this.index = index;
 		}
-		public void Move(GameObject puppet)
+		public void Move(GameObject obj)
 		{
-			move(puppet);
+			this.puppeteer.Move(obj);
 		}
 	}
 }
