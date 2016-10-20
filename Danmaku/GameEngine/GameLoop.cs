@@ -20,6 +20,14 @@ namespace Danmaku.GameEngine
 			get { return frameEven; }
 		}
 
+		private static void ObjectsAct()
+		{
+			foreach (var obj in ObjectStorage.Instance)
+			{
+				obj.Act();
+			}
+		}
+
 		public static void Act()
 		{
 			++frame;

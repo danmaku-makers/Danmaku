@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Danmaku.GameEngine
 {
-	class ObjectStorage : IEnumerable
+	class ObjectStorage : IEnumerable<GameObject>
 	{
 		private List<GameObject> objectArray = new List<GameObject>();
 		private static ObjectStorage instance = new ObjectStorage();
@@ -20,16 +20,30 @@ namespace Danmaku.GameEngine
 		{
 			get { return instance; }
 		}
+
 		public void Add(GameObject obj)
 		{
 			objectArray.Add(obj);
 		}
-		public IEnumerator GetEnumerator()
+
+		public IEnumerator<GameObject> GetEnumerator()
 		{
-			for (int i = 0; i < objectArray.Count; ++i)
+			int i = 0;
+			while (i < objectArray.Count)
 			{
-				yield return objectArray[i];
+				if (objectArray[i])
+					yield return objectArray[i++];
+				else
+				{
+					objectArray[i] = objectArray[objectArray.Count - 1];
+					objectArray.RemoveAt(objectArray.Count - 1);
+				}
 			}
+		}
+
+		IEnumerator IEnumerable.GetEnumerator()
+		{
+			return Instance.GetEnumerator();
 		}
 	}
 }

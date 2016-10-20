@@ -29,5 +29,9 @@ namespace Danmaku.GameEngine.Input
 		{
 			this.puppeteer.Move(obj);
 		}
+		public void Unbind(GameObject obj)
+		{
+			puppeteer.Unbind(obj);
+		}
 	}
 }

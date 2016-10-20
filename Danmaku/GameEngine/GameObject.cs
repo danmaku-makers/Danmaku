@@ -8,16 +8,20 @@ using Danmaku.GameEngine.Input;
 
 namespace Danmaku.GameEngine
 {
-	class GameObject
+	abstract class GameObject
 	{
-		private static int newID = 1;
-
+		private int id;
 		private Vector positionEven;
 		private Vector positionOdd;
 		private double directionEven;
 		private double directionOdd;
 
-		public readonly int ID;
+		private static int newID = 1;
+
+		public int ID
+		{
+			get { return id; }
+		}
 		public readonly int CreationFrame;
 		public int ExistingTime
 		{
@@ -73,9 +77,20 @@ namespace Danmaku.GameEngine
 
 		public GameObject()
 		{
-			ID = newID++;
+			id = newID++;
 			CreationFrame = GameLoop.Frame;
 			ObjectStorage.Instance.Add(this);
+		}
+		public void Delete()
+		{
+			Input.Unbind(this);
+			id = 0;
+		}
+		public abstract void Act();
+
+		public static implicit operator bool(GameObject obj)
+		{
+			return obj.id != 0;
 		}
 	}
 }
