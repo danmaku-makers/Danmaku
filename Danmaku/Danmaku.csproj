@@ -62,6 +62,9 @@
     <Compile Include="Accessary\FreeList.cs" />
     <Compile Include="GameEngine\GameEngine.cs" />
     <Compile Include="GameEngine\GameLoop.cs" />
+    <Compile Include="GameEngine\Geometry\Circle.cs" />
+    <Compile Include="GameEngine\Geometry\GeometryComponent.cs" />
+    <Compile Include="GameEngine\Geometry\IFigure.cs" />
     <Compile Include="GameEngine\Input\IPuppeteer.cs" />
     <Compile Include="GameEngine\Input\MoveComponent.cs" />
     <Compile Include="GameEngine\Input\StraightMove.cs" />
@@ -106,9 +109,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="GameEngine\Geometry\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

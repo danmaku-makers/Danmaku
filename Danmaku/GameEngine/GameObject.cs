@@ -27,7 +27,7 @@ namespace Danmaku.GameEngine
 		{
 			get
 			{
-				return GameLoop.Frame - CreationFrame;
+				return GameLoop.CurrentFrame - CreationFrame;
 			}
 		}
 		public Vector Position
@@ -79,7 +79,7 @@ namespace Danmaku.GameEngine
 		public GameObject()
 		{
 			id = newID++;
-			CreationFrame = GameLoop.Frame;
+			CreationFrame = GameLoop.CurrentFrame;
 			ObjectStorage.Instance.Add(this);
 		}
 		public void Delete()
