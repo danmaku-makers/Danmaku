@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using danmakuForm.OpenGL;
 
-namespace danmakuForm
+namespace Danmaku.Graphics
 {
     class DrawableObject
     {

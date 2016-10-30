@@ -74,6 +74,7 @@ namespace Danmaku.GameEngine
 			}
 		}
 		public MoveComponent Input { get; set; }
+		public Graphics.DrawableObject GraphicComponent { get; set; }
 
 		public GameObject()
 		{
