@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using danmakuForm.OpenGL; 
+using Danmaku.Graphics.OpenGL;
 
-namespace danmakuForm
+namespace Danmaku.Graphics
 {
     static class Graphics
     {
