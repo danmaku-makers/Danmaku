@@ -22,7 +22,7 @@ namespace danmakuForm
         {
             graphicControl = newGraphicControl;
             Graphics.Initialize();
-            Graphics.SetBackground(@"D:\projects\danmaku\danmaku\danmakugraphics\danmakugraphics\resources\Menu.png");
+            Graphics.SetBackground("Menu.png");
             Graphics.DrawFrame();
         }
 
