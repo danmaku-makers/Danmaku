@@ -1,4 +1,4 @@
-﻿namespace danmakuForm
+﻿namespace Danmaku
 {
     partial class MainForm
     {

@@ -13,7 +13,7 @@ using Tao.FreeGlut;
 using Tao.OpenGl;
 using Tao.Platform.Windows;
 
-namespace danmakuForm
+namespace Danmaku
 {
     public partial class MainForm : Form
     {

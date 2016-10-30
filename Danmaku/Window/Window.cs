@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Danmaku.Graphics;
 using GraphicControl = Tao.Platform.Windows.SimpleOpenGlControl;
 
-namespace danmakuForm
+namespace Danmaku
 {
     static class Window
     {
@@ -21,9 +22,9 @@ namespace danmakuForm
         public static void Load(GraphicControl newGraphicControl)
         {
             graphicControl = newGraphicControl;
-            Graphics.Initialize();
-            Graphics.SetBackground("Menu.png");
-            Graphics.DrawFrame();
+            Graphics.Graphics.Initialize();
+            Graphics.Graphics.SetBackground("Menu.png");
+            Graphics.Graphics.DrawFrame();
         }
 
     
