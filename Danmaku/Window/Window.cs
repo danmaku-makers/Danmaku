@@ -23,7 +23,7 @@ namespace Danmaku
         {
             graphicControl = newGraphicControl;
             Graphics.Graphics.Initialize();
-            Graphics.Graphics.SetBackground("Menu.png");
+            Graphics.Graphics.SetBackground(@"../../Sprites/Menu.png");
             Graphics.Graphics.DrawFrame();
         }
 

@@ -9,29 +9,24 @@ using Tao.OpenGl;
 using Tao.Platform.Windows;
 using System.Windows.Forms;
 
+using Danmaku.GameEngine;
+
 namespace Danmaku.Graphics.OpenGL
 {
+
+
     static class PlatformSpecificGraphics
     {
-        static Image testImage;
-        static public void TestScreen(SimpleOpenGlControl screen)
+        public static void Draw(DrawableObject objectToDraw)
         {
-            testImage = new Image(@"d:\projects\danmaku\danmaku\danmakugraphics\danmakugraphics\resources\Menu.png");
-
-            Gl.glViewport(0, 0, (int)testImage.Width, (int)testImage.Height);
-            Gl.glMatrixMode(Gl.GL_MODELVIEW);
-            Gl.glLoadIdentity();
-
-            Glu.gluOrtho2D(0, (int)testImage.Width, 0, (int)testImage.Height);
-            Gl.glTranslated((int)testImage.Width / 2, (int)testImage.Height / 2, 0);
-
-            StartFrame();
-            Draw(testImage, 0, 0);
-            screen.Invalidate();
-
+            if (!frameStarted)
+            {
+                StartFrame();
+            }
+            Draw(objectToDraw.Image, 0, 0);
         }
-
-
+     
+        
         #region Поля
         static bool isInitialized = false;
         static bool frameStarted = false;
@@ -47,7 +42,7 @@ namespace Danmaku.Graphics.OpenGL
         {
             if (!image.IsLoaded)
             {
-                throw new ArgumentException("Изображение не загржуено!");
+                throw new ArgumentException("Изображение не загружено!");
             }
             int newWidth = (int)image.Width, newHeight = (int)image.Height;
 
@@ -67,24 +62,22 @@ namespace Danmaku.Graphics.OpenGL
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="objectsToDraw"></param>
-        public static void Draw(IEnumerable<DrawableObject> objectsToDraw)
+        public static void Draw(IEnumerable<GameObject> objectsToDraw)
         {
+
             if (!frameStarted)
             {
                 StartFrame();
             }
-            foreach (DrawableObject @object in objectsToDraw)
+            foreach (GameObject @object in objectsToDraw)
             {
-                Draw(@object.Image, 0, 0);
+                Draw(@object.GraphicComponent.Image, @object.Position.X, @object.Position.Y);
             }
         }
-        public static void Draw(DrawableObject objectToDraw)
+
+        public static void Draw(GameObject objectToDraw)
         {
-            if (!frameStarted)
-            {
-                StartFrame();
-            }
-            Draw(objectToDraw.Image, 0, 0);
+            Draw(objectToDraw.GraphicComponent.Image, objectToDraw.Position.X, objectToDraw.Position.Y);
         }
 
         /// <summary>
