@@ -11,7 +11,7 @@ namespace Danmaku.GameEngine
 		private static int frame = 0;
 		private static bool frameEven = true;
 
-		public static int Frame
+		public static int CurrentFrame
 		{
 			get { return frame; }
 		}
