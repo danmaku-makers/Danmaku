@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Danmaku.Graphics.OpenGL;
+using Danmaku.Drawing.OpenGL;
 
-namespace Danmaku.Graphics
+namespace Danmaku.Drawing
 {
     class DrawableObject
     {

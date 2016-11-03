@@ -3,21 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+
 using Tao.DevIl;
 using Tao.FreeGlut;
 using Tao.OpenGl;
 using Tao.Platform.Windows;
-using System.Windows.Forms;
-
 using Danmaku.GameEngine;
 
-namespace Danmaku.Graphics.OpenGL
+namespace Danmaku.Drawing.OpenGL
 {
 
 
     static class PlatformSpecificGraphics
     {
-        public static void Draw(DrawableObject objectToDraw)
+
+
+
+
+
+        public static void DrawUIElement(DrawableObject objectToDraw)
         {
             if (!frameStarted)
             {
@@ -33,29 +38,6 @@ namespace Danmaku.Graphics.OpenGL
         #endregion
 
         #region Публичные методы
-
-        /// <summary>
-        /// Устанавливает размер окна под размер изображения
-        /// </summary>
-        /// <param name="image"></param>
-        public static void ScreenToImage(Image image)
-        {
-            if (!image.IsLoaded)
-            {
-                throw new ArgumentException("Изображение не загружено!");
-            }
-            int newWidth = (int)image.Width, newHeight = (int)image.Height;
-
-            //Window.GraphicControl.Width = newWidth;
-            // Window.GraphicControl.Height = newHeight;
-            Window.GraphicControl.Size = new System.Drawing.Size(newWidth, newHeight);
-            Gl.glViewport(0, 0, newWidth, newHeight);
-            Gl.glMatrixMode(Gl.GL_MODELVIEW);
-            Gl.glLoadIdentity();
-
-            Glu.gluOrtho2D(0, newWidth, 0, newHeight);
-            Gl.glTranslated(newWidth / 2, newHeight / 2, 0);
-        }
 
         /// <summary>
         /// Рисует коллекцию объектов
@@ -122,7 +104,7 @@ namespace Danmaku.Graphics.OpenGL
         {
             Gl.glDisable(Gl.GL_TEXTURE_2D);
             Gl.glDisable(Gl.GL_BLEND);
-            Window.GraphicControl.Invalidate();
+            GraphicControl.Invalidate();
             frameStarted = false;
         }
 

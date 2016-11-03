@@ -9,7 +9,7 @@ using Tao.OpenGl;
 using Tao.Platform.Windows;
 
 
-namespace Danmaku.Graphics.OpenGL
+namespace Danmaku.Drawing.OpenGL
 {
     struct Image
     {

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Danmaku.Graphics.OpenGL;
+using Danmaku.Drawing.OpenGL;
 using Danmaku.GameEngine;
-namespace Danmaku.Graphics
+namespace Danmaku.Drawing
 {
     static class Graphics
     {
@@ -20,17 +20,15 @@ namespace Danmaku.Graphics
         static List<GameObject> objectsToDraw = new List<GameObject>();
 
 
-        private static DrawableObject backGround;
-        private static DrawableObject HUD;
         public static void SetBackground(string imagePath)
         {
-            backGround = new DrawableObject(imagePath);
-            PlatformSpecificGraphics.ScreenToImage(backGround.Image);
+            GraphicControl.SetBackground(new DrawableObject(imagePath));
         }
-        public static void SetHud(string imagePath)
+        public static void SetOverlay(string imagePath)
         {
-            HUD = new DrawableObject(imagePath);
+            GraphicControl.SetOverlay(new DrawableObject(imagePath));
         }
+
         public static void Initialize()
         {
             PlatformSpecificGraphics.Initialize();
@@ -38,8 +36,9 @@ namespace Danmaku.Graphics
         public static void DrawFrame()
         {
             PlatformSpecificGraphics.StartFrame();
-            PlatformSpecificGraphics.Draw(backGround);
+            GraphicControl.DrawBackground();
             PlatformSpecificGraphics.Draw(objectsToDraw);
+            GraphicControl.DrawOverlay();
             PlatformSpecificGraphics.EndFrame();
         }
     }

@@ -70,6 +70,7 @@
     <Compile Include="GameEngine\Input\StraightMove.cs" />
     <Compile Include="GameEngine\ObjectStorage.cs" />
     <Compile Include="Graphics\DrawableObject.cs" />
+    <Compile Include="Graphics\OpenGL\GraphicControl.cs" />
     <Compile Include="Window\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
